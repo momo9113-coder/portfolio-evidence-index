@@ -1,0 +1,28 @@
+# momo9113-coder portfolio evidence index
+
+Purpose: evidence-grounded CV, statement, and interview drafting. This is a machine entry point, not a claim that every public repository is original portfolio work.
+
+READ FIRST
+1. Project routes and verification protocol: https://raw.githubusercontent.com/momo9113-coder/portfolio-evidence-index/main/portfolio.json
+2. Complete public repository inventory: https://raw.githubusercontent.com/momo9113-coder/portfolio-evidence-index/main/generated/github-repositories.json
+3. Live GitHub owner API: https://api.github.com/users/momo9113-coder/repos?per_page=100&type=owner&sort=updated
+
+INTERPRETATION
+- `project_routes` points to the three resume-eligible, authored projects and tells you what to inspect.
+- The complete inventory also contains forks and must not be treated as proof of authorship.
+- ROGII/Kaggle is included even though it is maintained in a separate engineering workflow.
+- Discover the current public commit first, then read the routed source files and independently evaluate the code, tests, reports, releases, CI, and deployment.
+- Do not copy a metric from this index: extract it from project evidence, retain its date and evaluation scope, and pin the final claim to a commit.
+- Re-check time-sensitive deployment, Actions, release, and Kaggle leaderboard state before submission.
+- Do not infer causality, production impact, users, revenue, novelty, team size, or final competition standing.
+
+CURRENT RESUME-ELIGIBLE PROJECTS
+- rogii-wellbore-geology-portfolio: engineering ML / Kaggle competition
+- loadlens-forecasting-service: time-series ML service and public app
+- commercelens-analytics-warehouse: SQL/DuckDB analytics engineering and public report
+
+EXCLUDED BY DEFAULT
+- hajiren: public fork; do not present it as original work or a primary portfolio project.
+
+PERSONAL DATA
+This repository intentionally omits the candidate's legal name, contact details, institution name, and unpublished manuscript content. Obtain those separately and preserve placeholders until explicitly supplied.

@@ -1,0 +1,181 @@
+{
+  "$schema": "./portfolio.schema.json",
+  "schema_version": "1.0.0",
+  "document_type": "llm_repository_navigation_index",
+  "updated_at": "2026-07-22",
+  "owner": {
+    "github_login": "momo9113-coder",
+    "github_profile": "https://github.com/momo9113-coder"
+  },
+  "purpose": "Direct an LLM to all public GitHub work and provide a disciplined protocol for independently evaluating resume-relevant projects.",
+  "entrypoints": {
+    "llm_bootstrap": "https://raw.githubusercontent.com/momo9113-coder/portfolio-evidence-index/main/llms.txt",
+    "project_routes": "https://raw.githubusercontent.com/momo9113-coder/portfolio-evidence-index/main/portfolio.json",
+    "complete_public_inventory": "https://raw.githubusercontent.com/momo9113-coder/portfolio-evidence-index/main/generated/github-repositories.json",
+    "live_github_owner_api": "https://api.github.com/users/momo9113-coder/repos?per_page=100&type=owner&sort=updated",
+    "repository_api_template": "https://api.github.com/repos/{owner}/{repo}",
+    "repository_tree_api_template": "https://api.github.com/repos/{owner}/{repo}/git/trees/{ref}?recursive=1",
+    "repository_commits_api_template": "https://api.github.com/repos/{owner}/{repo}/commits?per_page=100",
+    "repository_releases_api_template": "https://api.github.com/repos/{owner}/{repo}/releases?per_page=100",
+    "repository_actions_api_template": "https://api.github.com/repos/{owner}/{repo}/actions/runs?per_page=20"
+  },
+  "assessment_protocol": [
+    "Enumerate all public repositories from complete_public_inventory or live_github_owner_api; do not assume the hand-maintained routes are exhaustive.",
+    "Separate authored portfolio repositories from forks, mirrors, templates, and incidental repositories before drafting a CV.",
+    "For each candidate project, resolve the current default branch and commit through GitHub API before reading files.",
+    "Read the routed files, then inspect the repository tree, implementation, tests, data provenance, reports, release, recent CI, and live deployment where applicable.",
+    "Trace every quantitative claim to a repository artifact; preserve its dataset, baseline, validation design, date, denominator, unit, and limitations.",
+    "Compare local validation with external or leaderboard results and retain negative results or failed folds when they materially qualify a claim.",
+    "Draft only after evidence review. Prefer two or three strong complementary projects over listing every repository.",
+    "Pin final application claims to immutable commit URLs and re-check time-sensitive CI, deployments, releases, and leaderboard state immediately before submission."
+  ],
+  "project_routes": [
+    {
+      "id": "rogii-wellbore-geology-portfolio",
+      "repository": "momo9113-coder/rogii-wellbore-geology-portfolio",
+      "repository_url": "https://github.com/momo9113-coder/rogii-wellbore-geology-portfolio",
+      "resume_eligible": true,
+      "authorship_class": "authored_portfolio_project",
+      "portfolio_role": "engineering ML and Kaggle competition evidence",
+      "maintenance_boundary": "This project is maintained in a separate Kaggle workflow. This index only routes readers to its public evidence.",
+      "read_first": [
+        "README.md",
+        "COMPETITION.md",
+        "AGENTS.md",
+        "reports/experiments.md",
+        "docs/08_public_method_sources.md"
+      ],
+      "inspect_next": [
+        "reports/*validation.json",
+        "reports/*audit.json",
+        "reports/figures/",
+        "src/kaggle_portfolio/",
+        "kaggle_kernel*/",
+        "scripts/"
+      ],
+      "evaluate_for": [
+        "problem formulation and domain relevance",
+        "validation leakage controls and well-level splitting",
+        "progression from baseline to selected method",
+        "relationship between local validation and public leaderboard results",
+        "negative experiments and stop decisions",
+        "reproducibility and notebook-only deployment constraints",
+        "method attribution versus actual implementation contribution"
+      ],
+      "time_sensitive_checks": [
+        "competition status and deadline",
+        "latest submission score",
+        "dated rank and participant count",
+        "whether a final release exists after competition close"
+      ],
+      "external_links": [
+        "https://www.kaggle.com/competitions/rogii-wellbore-geology-prediction"
+      ]
+    },
+    {
+      "id": "loadlens-forecasting-service",
+      "repository": "momo9113-coder/loadlens-forecasting-service",
+      "repository_url": "https://github.com/momo9113-coder/loadlens-forecasting-service",
+      "resume_eligible": true,
+      "authorship_class": "authored_portfolio_project",
+      "portfolio_role": "time-series ML service and public application evidence",
+      "read_first": [
+        "README.md",
+        "AGENTS.md",
+        "docs/BACKTEST.md",
+        "docs/DEPLOYMENT.md",
+        "reports/README.md"
+      ],
+      "inspect_next": [
+        "reports/rolling_origin_summary.json",
+        "reports/rolling_origin_folds.csv",
+        "src/loadlens/",
+        "tests/",
+        ".github/workflows/",
+        "app/streamlit_app.py"
+      ],
+      "evaluate_for": [
+        "chronology-safe feature engineering",
+        "rolling-origin validation design",
+        "model comparison against persistence",
+        "fold-level failures and interval calibration limitations",
+        "API, application, tests, data provenance, and reproducibility",
+        "difference between a public demonstration and production use"
+      ],
+      "time_sensitive_checks": [
+        "latest release and default-branch commit",
+        "recent GitHub Actions result",
+        "public Streamlit cold-start and rendering status"
+      ],
+      "external_links": [
+        "https://loadlens-forecasting-service-xx64wapp6mrljcncsedvaah.streamlit.app/"
+      ]
+    },
+    {
+      "id": "commercelens-analytics-warehouse",
+      "repository": "momo9113-coder/commercelens-analytics-warehouse",
+      "repository_url": "https://github.com/momo9113-coder/commercelens-analytics-warehouse",
+      "resume_eligible": true,
+      "authorship_class": "authored_portfolio_project",
+      "portfolio_role": "analytics engineering, SQL, and public reporting evidence",
+      "read_first": [
+        "README.md",
+        "AGENTS.md",
+        "docs/ANALYSIS.md",
+        "docs/DEPLOYMENT.md",
+        "data/SNAPSHOT.md"
+      ],
+      "inspect_next": [
+        "data/snapshot_manifest.json",
+        "sql/",
+        "src/commercelens/",
+        "tests/",
+        ".github/workflows/",
+        "site/"
+      ],
+      "evaluate_for": [
+        "warehouse layers and SQL design",
+        "data-quality checks and source lineage",
+        "metric denominators and missingness",
+        "descriptive versus causal interpretation",
+        "pipeline reproducibility, tests, report generation, and deployment",
+        "licensed raw-data handling"
+      ],
+      "time_sensitive_checks": [
+        "latest release and default-branch commit",
+        "recent test and Pages workflow results",
+        "public report and image rendering status"
+      ],
+      "external_links": [
+        "https://momo9113-coder.github.io/commercelens-analytics-warehouse/"
+      ]
+    }
+  ],
+  "known_nonportfolio_routes": [
+    {
+      "repository": "momo9113-coder/hajiren",
+      "repository_url": "https://github.com/momo9113-coder/hajiren",
+      "classification": "fork",
+      "resume_eligible": false,
+      "instruction": "Do not present this as original work or a primary project unless a later evidence review identifies and verifies substantial original contributions."
+    }
+  ],
+  "global_boundaries": [
+    "Do not infer authorship from repository ownership alone.",
+    "Do not invent internship experience, team size, user counts, production SLAs, revenue, commercial impact, awards, or publication status.",
+    "Describe a research paper only as a manuscript under review unless acceptance or publication is independently verified.",
+    "Do not convert observational associations into causal claims.",
+    "Do not call an established public method novel; distinguish method sources from implementation and evaluation work.",
+    "Do not use stale Kaggle ranks, deployment status, release status, or CI status as current facts."
+  ],
+  "privacy": {
+    "omitted_by_design": [
+      "legal name",
+      "contact details",
+      "institution name",
+      "unpublished manuscript content",
+      "credentials and local paths"
+    ],
+    "instruction": "Obtain personal details separately and keep placeholders until the candidate explicitly supplies them."
+  }
+}

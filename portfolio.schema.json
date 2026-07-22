@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/momo9113-coder/portfolio-evidence-index/main/portfolio.schema.json",
+  "title": "LLM Repository Navigation Index",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "document_type",
+    "updated_at",
+    "owner",
+    "entrypoints",
+    "assessment_protocol",
+    "project_routes",
+    "known_nonportfolio_routes",
+    "global_boundaries",
+    "privacy"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "document_type": {
+      "const": "llm_repository_navigation_index"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "owner": {
+      "type": "object",
+      "required": [
+        "github_login",
+        "github_profile"
+      ]
+    },
+    "entrypoints": {
+      "type": "object"
+    },
+    "assessment_protocol": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "project_routes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/route"
+      }
+    },
+    "known_nonportfolio_routes": {
+      "type": "array"
+    },
+    "global_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "privacy": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "route": {
+      "type": "object",
+      "required": [
+        "id",
+        "repository",
+        "repository_url",
+        "resume_eligible",
+        "authorship_class",
+        "portfolio_role",
+        "read_first",
+        "inspect_next",
+        "evaluate_for",
+        "time_sensitive_checks",
+        "external_links"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string",
+          "pattern": "^[^/]+/[^/]+$"
+        },
+        "repository_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "resume_eligible": {
+          "const": true
+        },
+        "read_first": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "inspect_next": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "evaluate_for": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "time_sensitive_checks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "external_links": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}
